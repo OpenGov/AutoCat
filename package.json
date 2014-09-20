@@ -1,0 +1,17 @@
+{
+  "name": "ReactDocgen",
+  "version": "0.0.0",
+  "description": "Autogenerate React component library documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "Ovid": "git+ssh://git@github.com:OpenGov/Ovid#v0.18.1",
+    "esprima-fb": "^6001.1001.0-dev-harmony-fb",
+    "express": "^4.9.4",
+    "lodash": "^2.4.1"
+  },
+  "author": "Gurdas Nijor",
+  "license": "ISC"
+}
