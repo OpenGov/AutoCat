@@ -8,10 +8,21 @@
   },
   "dependencies": {
     "Ovid": "git+ssh://git@github.com:OpenGov/Ovid#v0.18.1",
+    "browserify": "^5.12.0",
     "esprima-fb": "^6001.1001.0-dev-harmony-fb",
+    "estraverse": "^1.5.1",
     "express": "^4.9.4",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "react": "0.11.1"
   },
   "author": "Gurdas Nijor",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-clean": "^0.3.1",
+    "gulp-plumber": "^0.6.5",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-webserver": "^0.8.1",
+    "reactify": "^0.14.0"
+  }
 }

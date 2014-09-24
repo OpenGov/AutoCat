@@ -4,6 +4,8 @@ var Syntax = require('esprima-fb').Syntax;
 var _ = require('lodash');
 
 
+var componentDir = './node_modules/Ovid/dist/javascripts/jsx/';
+
 
 function traverse(node, func) {
   func(node);//1
@@ -25,30 +27,6 @@ function traverse(node, func) {
 }
 
 
-
-var code ="var Avatar = React.createClass({"+
-"  propTypes: {"+
-"    id: React.PropTypes.number.isRequired,"+
- "   size: React.PropTypes.oneOf(['small', 'medium', 'large']),"+
-"  },"+
-  "render:function(){"+
-
- " }"+
-"});";
-
-
-
-//var code = fs.redFileSync("/Users/opengov/WebstormProjects/Ovid/dist/javascripts/jsx/avatar.js");
-
-
-
-
-
-
-
-
-
-
 function getComponentProps(object) {
 
   if (object &&
@@ -60,6 +38,7 @@ function getComponentProps(object) {
     console.log(_.map(object.properties[0].value.properties, function (e) {
     //  return e.key.name; //prop name
       if(e.value.property) {
+
         return e.key.name + " = " + e.value.property.name; //last fragment of value
       }
     }));
@@ -68,7 +47,7 @@ function getComponentProps(object) {
 }
 
 
-
+/*
 
 function getComponentName(displayName, object) {
   if (object &&
@@ -81,7 +60,7 @@ function getComponentName(displayName, object) {
     object['arguments'].length === 1 &&
     object['arguments'][0].type === Syntax.ObjectExpression) {
 
-      console.log(displayName);
+      return displayName;
 
   }
 }
@@ -109,33 +88,60 @@ function visitReactDisplayName(node){
 
 }
 
+*/
 
 
-//var componentDir = '/Users/opengov/WebstormProjects/ReportApp/javascripts/'
+function getComponentName(object) {
+  if (object &&
+    object.type === Syntax.AssignmentExpression &&
+    object.left.type === Syntax.MemberExpression &&
+    object.left.object.type === Syntax.Identifier &&
+    object.left.object.name === 'module' &&
+    object.left.property.type === Syntax.Identifier &&
+    object.left.property.name === 'exports') {
+
+    return object.right.name;
+
+  }
+}
+
+
+/*
+
+
+function visitExportedVariable(node){
+  var left, right;
+
+  if (node.type === Syntax.AssignmentExpression) {
+    left = node.left;
+    right = node.right;
+  }
 
 
 
+  if (left && left.type === Syntax.MemberExpression) {
+    getExportedVariable(right.name, right);
+  }
+
+}
 
 
-var componentDir = '/Users/opengov/WebstormProjects/Ovid/dist/javascripts/jsx/';
+*/
+
 
 fs.readdir(componentDir, function (err, files) {
   if (err) throw err;
 
   files.filter(function(f){ return f.indexOf(".js") != -1}).forEach( function (file) {
-
-    console.log(file);
-
+   // console.log(file);
     var code = fs.readFileSync(componentDir + file);
 
-
     var root =  esprima.parse(code);
-
 
     traverse(root, function(object) {
      // visitReactDisplayName(object);
 
-      getComponentProps(object);
+    getComponentName(object);
 
 
     });
@@ -143,58 +149,5 @@ fs.readdir(componentDir, function (err, files) {
   });
 });
 
-
-
-
-/*
-
-var root =  esprima.parse(code);
- traverse(root, function(object) {
-
-   if (object &&
-     object.type === Syntax.ObjectExpression &&
-     object.properties.length &&
-     object.properties[0].type === Syntax.Property &&
-     object.properties[0].key.name === 'propTypes')
-     {
-
-     console.log(_.map(object.properties[0].value.properties,function(e){return e.key.name; }));
-
-   }
-
- });
-*/
-
-
-
-
-/*
-var root =  esprima.parse(code);
-
-
-
-
-//Get the component name:
-traverse(root, function(node) {
-  if(node.type == "VariableDeclaration" && node.declarations[0].init.callee  && node.declarations[0].init.callee.property   ){
-    console.log(node.declarations[0].id.name );
-  }
-
-});
-
-
-//&&    node.declarations[0].init.callee.property.name === "createClass"
-
-
-
-traverse(root, function(node) {
-  if(node.type == "Property" && node.key.name === "propTypes"){
-    console.log(_.pluck(node.value.properties,"key") );
-  }
-
-});
-
-
-*/
 
 
