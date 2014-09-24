@@ -16,7 +16,6 @@ var source = require('vinyl-source-stream');
 var paths = {
   scss: ['./node_modules/Ovid/dist/stylesheets/application.rails.scss'],
   js: ['./app.jsx'],
-  ovidjs:['./node_modules/Ovid/dist/javascripts/jsx/**/*.js','./app.jsx'],
   fonts:'./node_modules/Ovid/dist/fonts/**',
   images:'./node_modules/Ovid/dist/images/**'
 };
@@ -29,7 +28,6 @@ gulp.task('clean', function () {
 
 
 gulp.task('js', function() {
-  // Browserify/bundle the JS.
   browserify(paths.js, {debug:true})
     .transform(reactify)
     .bundle()
@@ -69,9 +67,13 @@ gulp.task('watch', function() {
 gulp.task('server', function() {
   gulp.src('build')
     .pipe(webserver({
-
+      livereload: true,
+      open: true
     }));
 });
+
+
+
 
 
 gulp.task('build', ['js', 'sass', 'copy']);

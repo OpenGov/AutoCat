@@ -14,8 +14,9 @@ var DevCard = React.createClass({
     return {minSelectionMode:"days", field2:"value2"};
   },
 
+
   render:function(){
-    var component=  React.Children.only(this.props.children);
+    var component =  React.Children.only(this.props.children);
     return(
       <div className="ui-card__content" >
         <div className="ui-card $modifier_class" style={{height:this.props.height}}>
