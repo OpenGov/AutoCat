@@ -1,3 +1,7 @@
+/*NOTE:  None of this is used yet; the catalog frontend is still mostly statically generated*/
+
+
+
 var fs = require('fs');
 var esprima = require('esprima-fb');
 var Syntax = require('esprima-fb').Syntax;
