@@ -8,18 +8,18 @@ var componentDir = './node_modules/Ovid/dist/javascripts/jsx/';
 
 
 function traverse(node, func) {
-  func(node);//1
-  for (var key in node) { //2
-    if (node.hasOwnProperty(key)) { //3
+  func(node);
+  for (var key in node) {
+    if (node.hasOwnProperty(key)) {
       var child = node[key];
-      if (typeof child === 'object' && child !== null) { //4
+      if (typeof child === 'object' && child !== null) {
 
         if (Array.isArray(child)) {
-          child.forEach(function(node) { //5
+          child.forEach(function(node) {
             traverse(node, func);
           });
         } else {
-          traverse(child, func); //6
+          traverse(child, func);
         }
       }
     }

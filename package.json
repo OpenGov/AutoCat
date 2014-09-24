@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "Ovid": "git+ssh://git@github.com:OpenGov/Ovid#v0.18.1",
+    "Ovid": "git+ssh://git@github.com/gurdasnijor/Ovid.git#make_docgennable",
     "backbone": "^1.1.2",
     "browserify": "^5.12.0",
     "esprima-fb": "^6001.1001.0-dev-harmony-fb",
