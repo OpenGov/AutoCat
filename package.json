@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "Ovid": "git+ssh://git@github.com:OpenGov/Ovid#v0.18.1",
+    "backbone": "^1.1.2",
     "browserify": "^5.12.0",
     "esprima-fb": "^6001.1001.0-dev-harmony-fb",
     "estraverse": "^1.5.1",
     "express": "^4.9.4",
+    "jquery": "^2.1.1",
     "lodash": "^2.4.1",
     "react": "0.11.0",
     "vinyl-source-stream": "^1.0.0"
