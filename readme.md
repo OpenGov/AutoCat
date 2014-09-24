@@ -8,7 +8,7 @@ Automatically generate a React component catalog
 ##Quick Start (this will generate a component catalog for Ovid)
 
 ```
-git clone git@github.com:gurdasnijor/ReactDocGen.git
+git clone git@github.com:gurdasnijor/AutoCat.git && cd $_
 npm install
 gulp build
 gulp server
