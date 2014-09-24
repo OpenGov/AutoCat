@@ -13,7 +13,8 @@
     "estraverse": "^1.5.1",
     "express": "^4.9.4",
     "lodash": "^2.4.1",
-    "react": "0.11.1"
+    "react": "0.11.1",
+    "vinyl-source-stream": "^1.0.0"
   },
   "author": "Gurdas Nijor",
   "license": "ISC",
