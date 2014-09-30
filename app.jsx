@@ -85,6 +85,10 @@ var DevCard = React.createClass({
 
         }
       }
+      else{
+        newData[field] = {data:val, type:type};
+        this.setState(newData);
+      }
 
 
 
@@ -128,7 +132,7 @@ var App = React.createClass({
             </div>
           </div>
 
-            <DevCard initState={{minSelectionMode:{type:"string", data:"days"}, date:{type:"date", data:new Date()} }}  description="A component for allowing the selection of a day." >
+            <DevCard initState={{minSelectionMode:{type:"string", data:"days"} }}  description="A component for allowing the selection of a day." >
               <Ovid.Calendar />
             </DevCard>
 
@@ -137,7 +141,7 @@ var App = React.createClass({
             </DevCard>
 
 
-            <DevCard  initState={{minSelectionMode:{type:"string", data:"months"}, date:{type:"date", data:new Date()} }}  height={320} description="Uses the Calendar for allowing a user to select a date.  Has modes for 'days', 'months' and 'years" >
+            <DevCard  initState={{minSelectionMode:{type:"string", data:"months"}}}  height={320} description="Uses the Calendar for allowing a user to select a date.  Has modes for 'days', 'months' and 'years" >
               <Ovid.DatePicker />
             </DevCard>
 
